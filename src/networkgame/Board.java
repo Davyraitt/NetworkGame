@@ -30,6 +30,7 @@ public class Board extends Application {
 	private int lastFPSValue = 0;
 	private boolean colored = false;
 	
+	
 	@Override
 	public void start ( Stage stage ) throws Exception {
 		
@@ -81,6 +82,11 @@ public class Board extends Application {
 		stage.show ( );
 	}
 	
+	public void init ( ) { // initialisation method
+	
+	
+	}
+	
 	private void update ( double v ) {
 		long now = System.nanoTime ( );
 		long last = -1;
@@ -91,7 +97,6 @@ public class Board extends Application {
 		
 		//Clearing the screen first
 		graphics.clearRect ( 0 , 0 , this.width , this.height );
-		
 		
 		for ( int i = 0 ; i < 1000 ; i = i + 125 ) // loop that draws the checker board
 		{
@@ -123,13 +128,8 @@ public class Board extends Application {
 			}
 		}
 		
-		Piece piece1 = new Piece ( 8, 8 );
+		Piece piece1 = new Piece ( 1, 1 );
 		piece1.draw ( graphics );
-		
-		
-		
-		
-		
 		
 		//FPS drawen
 		if ( timer >= 1000000000 )
