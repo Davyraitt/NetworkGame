@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589220121059" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
   <component name="ChangeListManager">
     <list default="true" id="bddf6ea7-5243-4863-8b1d-474d0ec5ddd3" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/networkgame/Piece.java" afterDir="false" />
@@ -365,6 +358,5 @@
         </settings>
       </state>
     </states>
->>>>>>> Stashed changes
   </component>
 </project>
