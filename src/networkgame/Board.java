@@ -9,6 +9,7 @@ import org.jfree.fx.FXGraphics2D;
 import org.jfree.fx.ResizableCanvas;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class Board extends Application {
 	
@@ -91,7 +92,8 @@ public class Board extends Application {
 		//Clearing the screen first
 		graphics.clearRect ( 0 , 0 , this.width , this.height );
 		
-		for ( int i = 0 ; i < 1000 ; i = i + 125 )
+		
+		for ( int i = 0 ; i < 1000 ; i = i + 125 ) // loop that draws the checker board
 		{
 			if ( colored )
 			{
@@ -120,6 +122,14 @@ public class Board extends Application {
 				
 			}
 		}
+		
+		Piece piece1 = new Piece ( 8, 8 );
+		piece1.draw ( graphics );
+		
+		
+		
+		
+		
 		
 		//FPS drawen
 		if ( timer >= 1000000000 )
