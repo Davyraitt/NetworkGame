@@ -6,16 +6,18 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class Piece {
-	
-	float xPos;
-	float yPos;
-	Color colorPiece;
+
+	private float xPos;
+	private float yPos;
+	private Color colorPiece;
 	private Ellipse2D ellipse2D;
 	private String player;
 	private int piecenr;
-	
-	
-	public Piece ( float x, float y, Color color, String playerstring, int number) {
+
+	public Piece() {
+	}
+
+	public Piece (float x, float y, Color color, String playerstring, int number) {
 		xPos = ( x - 1) * 125;
 		yPos = ( y - 1) * 125;
 		ellipse2D =  new Ellipse2D.Double ( (12 + xPos), (10 + yPos) , 100 , 100 );
@@ -43,6 +45,12 @@ public class Piece {
 	public void getPiece ( ) {
 		System.out.println ( "The selected piece is: " + piecenr + "       // from player: " + player);
 	}
-	
-	
+
+	public float getxPos() {
+		return xPos;
+	}
+
+	public float getyPos() {
+		return yPos;
+	}
 }

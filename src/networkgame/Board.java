@@ -62,6 +62,9 @@ public class Board extends Application {
 	
 	// arraylist with all the pieces
 	ArrayList < Piece > allPieces = new ArrayList <> ( );
+
+	public Board() {
+	}
 	
 	@Override
 	public void start ( Stage stage ) throws Exception {
@@ -201,34 +204,24 @@ public class Board extends Application {
 		
 		//Clearing the screen first
 		graphics.clearRect ( 0 , 0 , this.width , this.height );
-		
-		for ( int i = 0 ; i < 1000 ; i = i + 125 ) // loop that draws the checker board
-		{
-			if ( colored )
-			{
-				graphics.setColor ( Color.white );
-				colored = false;
-			} else
-			{
-				graphics.setColor ( Color.black );
-				colored = true;
-			}
-			
-			for ( int j = 2 ; j < 1000 ; j = j + 125 )
-			{
-				
-				if ( colored )
-				{
-					graphics.setColor ( Color.white );
+
+		for (int i = 1; i < 9; i++) {
+			for (int j = 1; j < 9; j++) {
+				if (colored){
+					Vakje vakjeWit = new Vakje(i, j, false, Color.WHITE);
+					vakjeWit.draw(graphics);
 					colored = false;
-				} else
-				{
-					graphics.setColor ( Color.black );
-					colored = true;
+					break;
 				}
-				
-				graphics.fillRect ( i , j , 125 , 125 );
-				
+
+				if (!colored){
+					Vakje vakjeZwart = new Vakje(i,j,false, Color.BLACK);
+					vakjeZwart.draw(graphics);
+					colored = true;
+					break;
+				}
+
+
 			}
 		}
 		
@@ -250,5 +243,14 @@ public class Board extends Application {
 		// Stop drawing
 		graphics.dispose ( );
 	}
-	
+
+
+
+	public ResizableCanvas getCanvas() {
+		return canvas;
+	}
+
+	public ArrayList<Piece> getAllPieces() {
+		return allPieces;
+	}
 }
