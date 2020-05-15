@@ -29,7 +29,7 @@ public class Vakje {
 
         if (this.color.equals(Color.WHITE)){
             graphics.setColor(Color.WHITE);
-            graphics.fillRect(posX *125, posY*125, 125, 125);
+            graphics.fillRect(posX * 125, posY * 125, 125, 125);
         }
 
     }

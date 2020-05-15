@@ -198,32 +198,30 @@ public class Board extends Application {
 		
 		
 	}
-	
+
 	private void draw ( FXGraphics2D graphics ) {
 		graphics.setBackground ( Color.white );
 		
 		//Clearing the screen first
 		graphics.clearRect ( 0 , 0 , this.width , this.height );
 
-		for (int i = 1; i < 9; i++) {
-			for (int j = 1; j < 9; j++) {
-				if (colored){
-					Vakje vakjeWit = new Vakje(i, j, false, Color.WHITE);
-					vakjeWit.draw(graphics);
-					colored = false;
-					break;
-				}
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
 
-				if (!colored){
-					Vakje vakjeZwart = new Vakje(i,j,false, Color.BLACK);
+				if (colored) {
+					Vakje vakjeZwart = new Vakje(j, i, false, Color.BLACK);
 					vakjeZwart.draw(graphics);
-					colored = true;
-					break;
+				} else {
+					Vakje vakjeWit = new Vakje(j, i, false, Color.WHITE);
+					vakjeWit.draw(graphics);
 				}
 
+				colored = !colored;
 
 			}
+			colored = !colored;
 		}
+
 		
 		//FPS drawen
 		if ( timer >= 1000000000 )
