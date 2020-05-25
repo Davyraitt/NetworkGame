@@ -136,19 +136,19 @@ public class Board extends Application {
 	public void init ( ) { // initialisation method
 		
 		//creating the pieces for player 1;
-		P1Piece1 = new Piece ( 2 , 1 , Color.pink , "Player1" , 1 );
-		P1Piece2 = new Piece ( 4 , 1 , Color.pink , "Player1" , 2 );
-		P1Piece3 = new Piece ( 6 , 1 , Color.pink , "Player1" , 3 );
-		P1Piece4 = new Piece ( 8 , 1 , Color.pink , "Player1" , 4 );
-		P1Piece5 = new Piece ( 1 , 2 , Color.pink , "Player1" , 5 );
-		P1Piece6 = new Piece ( 3 , 2 , Color.pink , "Player1" , 6 );
-		P1Piece7 = new Piece ( 5 , 2 , Color.pink , "Player1" , 7 );
-		P1Piece8 = new Piece ( 7 , 2 , Color.pink , "Player1" , 8 );
-		P1Piece9 = new Piece ( 2 , 3 , Color.pink , "Player1" , 9 );
-		P1Piece10 = new Piece ( 4 , 3 , Color.pink , "Player1" , 10 );
-		P1Piece11 = new Piece ( 6 , 3 , Color.pink , "Player1" , 11 );
-		P1Piece12 = new Piece ( 8 , 3 , Color.pink , "Player1" , 12 );
-		
+		P1Piece1 = new Piece ( 2 , 1 , Color.pink , "Player1" , 1, false );
+		P1Piece2 = new Piece ( 4 , 1 , Color.pink , "Player1" , 2, false );
+		P1Piece3 = new Piece ( 6 , 1 , Color.pink , "Player1" , 3, false );
+		P1Piece4 = new Piece ( 8 , 1 , Color.pink , "Player1" , 4, false );
+		P1Piece5 = new Piece ( 1 , 2 , Color.pink , "Player1" , 5, false );
+		P1Piece6 = new Piece ( 3 , 2 , Color.pink , "Player1" , 6, false );
+		P1Piece7 = new Piece ( 5 , 2 , Color.pink , "Player1" , 7, false );
+		P1Piece8 = new Piece ( 7 , 2 , Color.pink , "Player1" , 8, false );
+		P1Piece9 = new Piece ( 2 , 3 , Color.pink , "Player1" , 9, false );
+		P1Piece10 = new Piece ( 4 , 3 , Color.pink , "Player1" , 10,false );
+		P1Piece11 = new Piece ( 6 , 3 , Color.pink , "Player1" , 11,false );
+		P1Piece12 = new Piece ( 8 , 3 , Color.pink , "Player1" , 12,false );
+
 		allPieces.add ( P1Piece1 );
 		allPieces.add ( P1Piece2 );
 		allPieces.add ( P1Piece3 );
@@ -164,19 +164,19 @@ public class Board extends Application {
 		
 		//creating the pieces for player 2;
 		
-		P2Piece1 = new Piece ( 1 , 8 , Color.CYAN , "Player2" , 1 );
-		P2Piece2 = new Piece ( 3 , 8 , Color.CYAN , "Player2" , 2 );
-		P2Piece3 = new Piece ( 5 , 8 , Color.CYAN , "Player2" , 3 );
-		P2Piece4 = new Piece ( 7 , 8 , Color.CYAN , "Player2" , 4 );
-		P2Piece5 = new Piece ( 2 , 7 , Color.CYAN , "Player2" , 5 );
-		P2Piece6 = new Piece ( 4 , 7 , Color.CYAN , "Player2" , 6 );
-		P2Piece7 = new Piece ( 6 , 7 , Color.CYAN , "Player2" , 7 );
-		P2Piece8 = new Piece ( 8 , 7 , Color.CYAN , "Player2" , 8 );
-		P2Piece9 = new Piece ( 1 , 6 , Color.CYAN , "Player2" , 9 );
-		P2Piece10 = new Piece ( 3 , 6 , Color.CYAN , "Player2" , 10 );
-		P2Piece11 = new Piece ( 5 , 6 , Color.CYAN , "Player2" , 11 );
-		P2Piece12 = new Piece ( 7 , 6 , Color.CYAN , "Player2" , 12 );
-		
+		P2Piece1 = new Piece ( 1 , 8 , Color.CYAN , "Player2" , 1, false );
+		P2Piece2 = new Piece ( 3 , 8 , Color.CYAN , "Player2" , 2, false );
+		P2Piece3 = new Piece ( 5 , 8 , Color.CYAN , "Player2" , 3, false );
+		P2Piece4 = new Piece ( 7 , 8 , Color.CYAN , "Player2" , 4, false );
+		P2Piece5 = new Piece ( 2 , 7 , Color.CYAN , "Player2" , 5, false );
+		P2Piece6 = new Piece ( 4 , 7 , Color.CYAN , "Player2" , 6, false );
+		P2Piece7 = new Piece ( 6 , 7 , Color.CYAN , "Player2" , 7, false );
+		P2Piece8 = new Piece ( 8 , 7 , Color.CYAN , "Player2" , 8, false );
+		P2Piece9 = new Piece ( 1 , 6 , Color.CYAN , "Player2" , 9, false );
+		P2Piece10 = new Piece ( 3 , 6 , Color.CYAN , "Player2" , 10, false );
+		P2Piece11 = new Piece ( 5 , 6 , Color.CYAN , "Player2" , 11, false );
+		P2Piece12 = new Piece ( 7 , 6 , Color.CYAN , "Player2" , 12, false );
+
 		allPieces.add ( P2Piece1 );
 		allPieces.add ( P2Piece2 );
 		allPieces.add ( P2Piece3 );
