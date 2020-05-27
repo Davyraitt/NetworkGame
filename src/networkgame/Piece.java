@@ -4,12 +4,12 @@ import org.jfree.fx.FXGraphics2D;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import static networkgame.KindOfPieces.*;
 
 public class Piece {
 
@@ -21,11 +21,12 @@ public class Piece {
 	private int piecenr;
 	private boolean king;
 	private BufferedImage image;
+	private String kindOfPiece;
 
 	public Piece() {
 	}
 
-	public Piece (float x, float y, Color color, String playerstring, int number, boolean king) {
+	public Piece (float x, float y, Color color, String playerstring, int number, boolean king, String kindOfPiece) {
 		xPos = ( x - 1) * 125;
 		yPos = ( y - 1) * 125;
 		ellipse2D =  new Ellipse2D.Double ( (12 + xPos), (10 + yPos) , 100 , 100 );
@@ -33,36 +34,37 @@ public class Piece {
 		player = playerstring;
 		piecenr = number;
 		this.king = king;
+		this.kindOfPiece = kindOfPiece;
 
-		switch () {
+		switch (kindOfPiece) {
 
-			case RED_NORMAL:
+			case "Red normal":
 				try {
-					image = ImageIO.read(new File("/pieceRedKing.png"));
+					image = ImageIO.read(new File("res/pieceRedNormal.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 
-			case RED_KING:
+			case "Red king":
 				try {
-					image = ImageIO.read(new File("/pieceRedKing.png"));
+					image = ImageIO.read(new File("res/pieceRedKing.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 
-			case BLACK_NORMAL:
+			case "Black normal":
 				try {
-					image = ImageIO.read(new File("/pieceRedKing.png"));
+					image = ImageIO.read(new File("res/pieceBlackNormal.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 
-			case BLACK_KING:
+			case "Black king":
 				try {
-					image = ImageIO.read(new File("/pieceRedKing.png"));
+					image = ImageIO.read(new File("res/pieceBlackKing.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -73,8 +75,9 @@ public class Piece {
 	}
 	
 	public void draw ( FXGraphics2D graphics) {
-		graphics.setColor ( colorPiece );
-		graphics.fill ( ellipse2D );
+		graphics.setColor(colorPiece);
+		graphics.fill(ellipse2D);
+		//graphics.drawImage(image, (int) (12 + xPos), (int) (10 + yPos), 100, 100, null);
 	}
 	
 	public void update ( int newxPos, int newyPos ) {
@@ -97,5 +100,9 @@ public class Piece {
 
 	public float getyPos() {
 		return yPos;
+	}
+
+	public BufferedImage getImage() {
+		return image;
 	}
 }

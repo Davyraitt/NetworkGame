@@ -22,8 +22,8 @@ public class Vakje {
     }
 
     public void draw ( FXGraphics2D graphics ) {
-        if (this.color.equals(Color.BLACK)){
-            graphics.setColor(Color.BLACK);
+        if (this.color.equals(Color.GRAY)){
+            graphics.setColor(Color.GRAY);
             graphics.fillRect(posX * 125, posY * 125, 125, 125);
         }
 

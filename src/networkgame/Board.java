@@ -12,6 +12,7 @@ import org.jfree.fx.ResizableCanvas;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Board extends Application {
 	
@@ -59,6 +60,8 @@ public class Board extends Application {
 	private Piece P2Piece10;
 	private Piece P2Piece11;
 	private Piece P2Piece12;
+
+	private Piece selectedPiece = null;
 	
 	// arraylist with all the pieces
 	ArrayList < Piece > allPieces = new ArrayList <> ( );
@@ -75,9 +78,11 @@ public class Board extends Application {
 		canvas = new ResizableCanvas ( g -> draw ( g ) , mainPane );
 		canvas.setFocusTraversable ( true );
 		mainPane.setCenter ( canvas );
-		
+
 		canvas.setOnMouseDragged ( this::mouseDragged );
-		
+		canvas.setOnMousePressed( this::mousePressed );
+		canvas.setOnMouseReleased ( this::mouseReleased );
+
 		FXGraphics2D g2d = new FXGraphics2D ( canvas.getGraphicsContext2D ( ) );
 		
 		//calls our init method
@@ -119,35 +124,59 @@ public class Board extends Application {
 		stage.setTitle ( "Checkers" );
 		stage.show ( );
 	}
-	
-	private void mouseDragged ( MouseEvent mouseEvent ) {
-		
-		for ( int i = 0 ; i < allPieces.size ( ) ; i++ )
-		{
-			if ( allPieces.get ( i ).getEllipse2D ( ).contains ( mouseEvent.getX ( ) , mouseEvent.getY ( ) ) )
-			{
-				allPieces.get ( i ).getPiece ( );
-				allPieces.get ( i ).update ( ( int ) mouseEvent.getX ( ) + - 50 , ( int ) mouseEvent.getY ( ) + - 50 );
+
+	private void mouseReleased(MouseEvent event) {
+		selectedPiece = null;
+	}
+
+	private void mousePressed(MouseEvent event) {
+		for ( Piece p : allPieces){
+			if(p.getEllipse2D().contains(event.getX(), event.getY())){
+				selectedPiece = p;
+				System.out.println( "NICE");
 			}
 		}
-		
+	}
+
+	private void mouseDragged ( MouseEvent event ) {
+		if (selectedPiece != null){
+			selectedPiece.getEllipse2D().setFrame(event.getX()- 50, event.getY()- 50, 100, 100);
+			draw(new FXGraphics2D(canvas.getGraphicsContext2D()));
+		} else {
+			System.out.println("Nah fam");
+		}
+
 	}
 	
 	public void init ( ) { // initialisation method
 		
 		//creating the pieces for player 1;
-		P1Piece1 = new Piece ( 2 , 1 , Color.pink , "Player1" , 1, false );
-		P1Piece2 = new Piece ( 4 , 1 , Color.pink , "Player1" , 2, false );
-		P1Piece3 = new Piece ( 6 , 1 , Color.pink , "Player1" , 3, false );
-		P1Piece4 = new Piece ( 8 , 1 , Color.pink , "Player1" , 4, false );
-		P1Piece5 = new Piece ( 1 , 2 , Color.pink , "Player1" , 5, false );
-		P1Piece6 = new Piece ( 3 , 2 , Color.pink , "Player1" , 6, false );
-		P1Piece7 = new Piece ( 5 , 2 , Color.pink , "Player1" , 7, false );
-		P1Piece8 = new Piece ( 7 , 2 , Color.pink , "Player1" , 8, false );
-		P1Piece9 = new Piece ( 2 , 3 , Color.pink , "Player1" , 9, false );
-		P1Piece10 = new Piece ( 4 , 3 , Color.pink , "Player1" , 10,false );
-		P1Piece11 = new Piece ( 6 , 3 , Color.pink , "Player1" , 11,false );
-		P1Piece12 = new Piece ( 8 , 3 , Color.pink , "Player1" , 12,false );
+		P1Piece1 = new Piece ( 2 , 1 , Color.pink , "Player1" , 1, false, "Red normal" );
+		P1Piece2 = new Piece ( 4 , 1 , Color.pink , "Player1" , 2, false, "Red normal" );
+		P1Piece3 = new Piece ( 6 , 1 , Color.pink , "Player1" , 3, false, "Red normal" );
+		P1Piece4 = new Piece ( 8 , 1 , Color.pink , "Player1" , 4, false, "Red normal" );
+		P1Piece5 = new Piece ( 1 , 2 , Color.pink , "Player1" , 5, false, "Red normal" );
+		P1Piece6 = new Piece ( 3 , 2 , Color.pink , "Player1" , 6, false, "Red normal" );
+		P1Piece7 = new Piece ( 5 , 2 , Color.pink , "Player1" , 7, false, "Red normal" );
+		P1Piece8 = new Piece ( 7 , 2 , Color.pink , "Player1" , 8, false, "Red normal" );
+		P1Piece9 = new Piece ( 2 , 3 , Color.pink , "Player1" , 9, false, "Red normal" );
+		P1Piece10 = new Piece ( 4 , 3 , Color.pink , "Player1" , 10,false, "Red normal" );
+		P1Piece11 = new Piece ( 6 , 3 , Color.pink , "Player1" , 11,false, "Red normal" );
+		P1Piece12 = new Piece ( 8 , 3 , Color.pink , "Player1" , 12,false, "Red king" );
+
+		/*for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 9; j += 2) {
+				if (j == 8){
+					j = 1;
+				}
+
+				if (j == 7) {
+					j = 2;
+				}
+				Piece pieceTest = new Piece ( j , i , Color.pink , "Player1" , 1, false, "Red normal" );
+			}
+
+		}*/
 
 		allPieces.add ( P1Piece1 );
 		allPieces.add ( P1Piece2 );
@@ -161,21 +190,21 @@ public class Board extends Application {
 		allPieces.add ( P1Piece10 );
 		allPieces.add ( P1Piece11 );
 		allPieces.add ( P1Piece12 );
-		
+
 		//creating the pieces for player 2;
-		
-		P2Piece1 = new Piece ( 1 , 8 , Color.CYAN , "Player2" , 1, false );
-		P2Piece2 = new Piece ( 3 , 8 , Color.CYAN , "Player2" , 2, false );
-		P2Piece3 = new Piece ( 5 , 8 , Color.CYAN , "Player2" , 3, false );
-		P2Piece4 = new Piece ( 7 , 8 , Color.CYAN , "Player2" , 4, false );
-		P2Piece5 = new Piece ( 2 , 7 , Color.CYAN , "Player2" , 5, false );
-		P2Piece6 = new Piece ( 4 , 7 , Color.CYAN , "Player2" , 6, false );
-		P2Piece7 = new Piece ( 6 , 7 , Color.CYAN , "Player2" , 7, false );
-		P2Piece8 = new Piece ( 8 , 7 , Color.CYAN , "Player2" , 8, false );
-		P2Piece9 = new Piece ( 1 , 6 , Color.CYAN , "Player2" , 9, false );
-		P2Piece10 = new Piece ( 3 , 6 , Color.CYAN , "Player2" , 10, false );
-		P2Piece11 = new Piece ( 5 , 6 , Color.CYAN , "Player2" , 11, false );
-		P2Piece12 = new Piece ( 7 , 6 , Color.CYAN , "Player2" , 12, false );
+
+		P2Piece1 = new Piece ( 1 , 8 , Color.CYAN , "Player2" , 1, false, "Black normal" );
+		P2Piece2 = new Piece ( 3 , 8 , Color.CYAN , "Player2" , 2, false, "Black normal" );
+		P2Piece3 = new Piece ( 5 , 8 , Color.CYAN , "Player2" , 3, false, "Black normal" );
+		P2Piece4 = new Piece ( 7 , 8 , Color.CYAN , "Player2" , 4, false, "Black normal" );
+		P2Piece5 = new Piece ( 2 , 7 , Color.CYAN , "Player2" , 5, false, "Black normal" );
+		P2Piece6 = new Piece ( 4 , 7 , Color.CYAN , "Player2" , 6, false, "Black normal" );
+		P2Piece7 = new Piece ( 6 , 7 , Color.CYAN , "Player2" , 7, false, "Black normal" );
+		P2Piece8 = new Piece ( 8 , 7 , Color.CYAN , "Player2" , 8, false, "Black normal" );
+		P2Piece9 = new Piece ( 1 , 6 , Color.CYAN , "Player2" , 9, false, "Black normal" );
+		P2Piece10 = new Piece ( 3 , 6 , Color.CYAN , "Player2" , 10, false, "Black normal" );
+		P2Piece11 = new Piece ( 5 , 6 , Color.CYAN , "Player2" , 11, false, "Black normal" );
+		P2Piece12 = new Piece ( 7 , 6 , Color.CYAN , "Player2" , 12, false, "Black king" );
 
 		allPieces.add ( P2Piece1 );
 		allPieces.add ( P2Piece2 );
@@ -209,7 +238,7 @@ public class Board extends Application {
 			for (int j = 0; j < 8; j++) {
 
 				if (colored) {
-					Vakje vakjeZwart = new Vakje(j, i, false, Color.BLACK);
+					Vakje vakjeZwart = new Vakje(j, i, false, Color.GRAY);
 					vakjeZwart.draw(graphics);
 				} else {
 					Vakje vakjeWit = new Vakje(j, i, false, Color.WHITE);
@@ -230,14 +259,13 @@ public class Board extends Application {
 			
 		}
 		
-		for ( int i = 0 ; i < allPieces.size ( ) ; i++ )
-		{
-			allPieces.get ( i ).draw ( graphics );
+		for (Piece p : allPieces){
+			p.draw(graphics);
 		}
 		
 		//draws the FPS right corner
 		graphics.drawString ( String.valueOf ( lastFPSValue ) , 975 , 15 );
-		
+
 		// Stop drawing
 		graphics.dispose ( );
 	}
